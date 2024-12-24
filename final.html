@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> SAFE GUARD MONITOR (SGM)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+        .left-menu {
+            width: 20%;
+            background-color: #f4f4f4;
+            padding: 15px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        }
+        .left-menu h2 {
+            font-size: 18px;
+            font-weight: bold;
+            color: #007BFF;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .left-menu ul {
+            list-style: none;
+            padding: 0;
+        }
+        .left-menu ul li {
+            margin-bottom: 10px;
+        }
+        .left-menu ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            display: block;
+            padding: 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .left-menu ul li a:hover {
+            background-color: #e0e0e0;
+        }
+        .left-menu ul li a.active {
+            background-color: #007BFF;
+            color: white;
+        }
+        .content-section {
+            width: 80%;
+            padding: 20px;
+            background-color: #fff;
+        }
+        .top-title {
+            background-color: #007BFF;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .section-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #007BFF;
+        }
+        .task-content {
+            margin-top: 20px;
+        }
+        iframe {
+            width: 100%;
+            height: 70vh;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .buttons button {
+            padding: 8px 15px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        .buttons button:hover {
+            background-color: #0056b3;
+        }
+        .resources-row {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            align-items: center;
+        }
+        .resources-row div {
+            text-align: center;
+        }
+        .resources-row img {
+            width: 40px;
+            height: 40px;
+        }
+    </style>
+    <script>
+        function loadContent(sectionId) {
+            const items = document.querySelectorAll('.left-menu ul li a');
+            items.forEach(item => item.classList.remove('active'));
+
+            // Update the active class on the clicked menu item
+            const selectedItem = document.getElementById(`${sectionId}-link`);
+            selectedItem.classList.add('active');
+
+            const sectionTitle = document.getElementById('section-title');
+            const taskContent = document.getElementById('task-content');
+
+            let content = {
+                sgm1: {
+                    title: 'SGM 0.1 - Introduction',
+                    html: `
+                        <ul>
+                            <li>Introduction to Arduino and its applications.</li>
+                            <li>Overview of Safe Guard Monitor (SGM) project objectives.</li>
+                            <li>Importance of safety in electronic circuits.</li>
+                        </ul>
+                        <div class="resources-row">
+                            <div><img src="https://img.icons8.com/ios/452/video-call.png" alt="Video"><br>Video</div>
+                            <div><img src="" alt="Skill Guide"><br>Skill Guide</div>
+                            <div><img src="https://img.icons8.com/ios/452/super-mario.png" alt="Hero's Resource"><br>Hero's Resource</div>
+                        </div>
+                        <div class="buttons">
+                            <button id="journey-button" onclick="showJourneyChallenge('intro')">Are you following along?</button>
+                        </div>
+                    `
+                },
+                sgm2: {
+                    title: 'SGM 0.2 - Circuit Making',
+                    html: `
+                        <ul>
+                            <li>Components required for the SGM circuit.</li>
+                            <li>Step-by-step guide to building the circuit.</li>
+                            <li>Testing and troubleshooting tips.</li>
+                        </ul>
+                        <div class="resources-row">
+                            <div><img src="https://img.icons8.com/ios/452/video-call.png" alt="Video"><br>Video</div>
+                            <div><img src="https://img.icons8.com/ios/452/skills.png" alt="Skill Guide"><br>Skill Guide</div>
+                            <div><img src="https://img.icons8.com/ios/452/super-mario.png" alt="Hero's Resource"><br>Hero's Resource</div>
+                        </div>
+                        <div class="buttons">
+                            <button id="journey-button" onclick="showJourneyChallenge('circuit')">Are you following along?</button>
+                        </div>
+                    `
+                },
+                sgm3: {
+                    title: 'SGM 0.3 - Coding',
+                    html: `
+                        <ul>
+                            <li>Introduction to Arduino IDE and coding basics.</li>
+                            <li>Uploading and testing the code.</li>
+                            <li>Debugging common issues in code implementation.</li>
+                        </ul>
+                        <div class="resources-row">
+                            <div><img src="https://img.icons8.com/ios/452/video-call.png" alt="Video"><br>Video</div>
+                            <div><img src="https://img.icons8.com/ios/452/skills.png" alt="Skill Guide"><br>Skill Guide</div>
+                            <div><img src="https://img.icons8.com/ios/452/super-mario.png" alt="Hero's Resource"><br>Hero's Resource</div>
+                        </div>
+                        <div class="buttons">
+                            <button id="journey-button" onclick="showJourneyChallenge('coding')">Are you following along?</button>
+                        </div>
+                    `
+                },
+                sgm4: {
+                    title: 'SGM 0.4 - Project Review',
+                    html: `
+                        <ul>
+                            <li>Review of the completed project.</li>
+                            <li>Feedback and suggestions for improvement.</li>
+                            <li>Showcasing the project in practical scenarios.</li>
+                        </ul>
+                        <div class="resources-row">
+                            <div><img src="https://img.icons8.com/ios/452/video-call.png" alt="Video"><br>Video</div>
+                            <div><img src="https://img.icons8.com/ios/452/skills.png" alt="Skill Guide"><br>Skill Guide</div>
+                            <div><img src="https://img.icons8.com/ios/452/super-mario.png" alt="Hero's Resource"><br>Hero's Resource</div>
+                        </div>
+                    `
+                }
+            };
+
+            let currentContent = content[sectionId];
+            sectionTitle.textContent = currentContent.title;
+            taskContent.innerHTML = currentContent.html;
+        }
+
+        function showJourneyChallenge(section) {
+            const journeyButton = document.getElementById('journey-button');
+            journeyButton.textContent = "Journey Challenge";
+
+            // Update button to trigger the H5P content after clicking "Journey Challenge"
+            journeyButton.setAttribute('onclick', `showH5PContent('${section}')`);
+        }
+
+        function showH5PContent(section) {
+            const taskContent = document.getElementById('task-content');
+            let h5pLinks = {
+                intro: 'https://stemxpert.h5p.com/content/1292463736042884747/embed',
+                circuit: 'https://stemxpert.h5p.com/content/1292463736126961737/embed',
+                coding: 'https://stemxpert.h5p.com/content/1292463736014645217/embed'
+            };
+            taskContent.innerHTML = `
+                <iframe src="${h5pLinks[section]}" 
+                        aria-label="Example: ${section === 'intro' ? 'Image Choice' : section === 'circuit' ? 'SGM Circuit' : 'Coding'}"
+                        frameborder="0" allowfullscreen="allowfullscreen" 
+                        allow="autoplay *; geolocation *; microphone *; camera *; midi *; encrypted-media *">
+                </iframe>
+            `;
+        }
+
+        window.onload = function () {
+            loadContent('sgm1');
+        };
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="left-menu">
+            <h2>Lesson 10 - Arduino Circuits - SAFE GUARD MONITOR (SGM)</h2>
+            <ul>
+                <li><a href="javascript:void(0);" id="sgm1-link" class="active" onclick="loadContent('sgm1')">SGM 0.1 - Introduction</a></li>
+                <li><a href="javascript:void(0);" id="sgm2-link" onclick="loadContent('sgm2')">SGM 0.2 - Circuit Making</a></li>
+                <li><a href="javascript:void(0);" id="sgm3-link" onclick="loadContent('sgm3')">SGM 0.3 - Coding</a></li>
+                <li><a href="javascript:void(0);" id="sgm4-link" onclick="loadContent('sgm4')">SGM 0.4 - Project Review</a></li>
+            </ul>
+        </div>
+
+        <div class="content-section">
+            <div class="top-title"> SAFE GUARD MONITOR (SGM)</div>
+            <div id="section-title" class="section-title"></div>
+            <div id="task-content" class="task-content"></div>
+        </div>
+    </div>
+</body>
+</html>
+
