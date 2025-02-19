@@ -108,10 +108,41 @@
         }
         .resources-row div {
             text-align: center;
+            cursor: pointer;
         }
         .resources-row img {
             width: 40px;
             height: 40px;
+        }
+        .pdf-viewer {
+            margin-top: 20px;
+        }
+        .notepad-container {
+            margin-top: 20px;
+        }
+        .notepad-container textarea {
+            width: 100%;
+            height: 200px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            resize: vertical;
+        }
+        .notepad-container button {
+            margin-top: 10px;
+            padding: 8px 15px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        .notepad-container button:hover {
+            background-color: #0056b3;
         }
     </style>
     <script>
@@ -129,6 +160,9 @@
             let content = {
                 sgm1: {
                     title: 'SGM 0.1 - Introduction',
+                    video: 'https://www.youtube.com/embed/qUXUYjOgxRw',
+                    skillGuide: 'SAFE GUARD MONITOR TM.pdf',
+                    heroResource: 'SAFE GUARD MONITOR PPT (1).pdf',
                     html: `
                         <ul>
                             <li>Introduction to Arduino and its applications.</li>
@@ -136,9 +170,12 @@
                             <li>Importance of safety in electronic circuits.</li>
                         </ul>
                         <div class="resources-row">
-                            <div><img src="https://img.icons8.com/ios/452/video-call.png" alt="Video"><br>Video</div>
-                            <div><img src="" alt="Skill Guide"><br>Skill Guide</div>
-                            <div><img src="https://img.icons8.com/ios/452/super-mario.png" alt="Hero's Resource"><br>Hero's Resource</div>
+                            <div onclick="showVideo('sgm1')"><img src="https://img.icons8.com/ios/452/video-call.png" alt="Video"><br>Video</div>
+                            <div onclick="showSkillGuide('sgm1')"><img src="https://img.icons8.com/ios/452/skills.png" alt="Skill Guide"><br>Skill Guide</div>
+                            <div onclick="showHeroResource('sgm1')"><img src="https://img.icons8.com/ios/452/super-mario.png" alt="Hero's Resource"><br>Hero's Resource</div>
+                        </div>
+                        <div id="content-display">
+                            <iframe src="https://www.youtube.com/embed/qUXUYjOgxRw" frameborder="0" allowfullscreen></iframe>
                         </div>
                         <div class="buttons">
                             <button id="journey-button" onclick="showJourneyChallenge('intro')">Are you following along?</button>
@@ -147,6 +184,9 @@
                 },
                 sgm2: {
                     title: 'SGM 0.2 - Circuit Making',
+                    video: 'https://www.youtube.com/embed/QhF5nFs51PI',
+                    skillGuide: 'path/to/skill-guide-2.pdf',
+                    heroResource: 'path/to/hero-resource-2.pdf',
                     html: `
                         <ul>
                             <li>Components required for the SGM circuit.</li>
@@ -154,9 +194,12 @@
                             <li>Testing and troubleshooting tips.</li>
                         </ul>
                         <div class="resources-row">
-                            <div><img src="https://img.icons8.com/ios/452/video-call.png" alt="Video"><br>Video</div>
-                            <div><img src="" alt="Skill Guide"><br>Skill Guide</div>
-                            <div><img src="https://img.icons8.com/ios/452/super-mario.png" alt="Hero's Resource"><br>Hero's Resource</div>
+                            <div onclick="showVideo('sgm2')"><img src="https://img.icons8.com/ios/452/video-call.png" alt="Video"><br>Video</div>
+                            <div onclick="showSkillGuide('sgm2')"><img src="https://img.icons8.com/ios/452/skills.png" alt="Skill Guide"><br>Skill Guide</div>
+                            <div onclick="showHeroResource('sgm2')"><img src="https://img.icons8.com/ios/452/super-mario.png" alt="Hero's Resource"><br>Hero's Resource</div>
+                        </div>
+                        <div id="content-display">
+                            <iframe src="https://www.youtube.com/embed/QhF5nFs51PI" frameborder="0" allowfullscreen></iframe>
                         </div>
                         <div class="buttons">
                             <button id="journey-button" onclick="showJourneyChallenge('circuit')">Are you following along?</button>
@@ -165,6 +208,9 @@
                 },
                 sgm3: {
                     title: 'SGM 0.3 - Coding',
+                    video: 'https://www.youtube.com/embed/cOaJDwcRIa0',
+                    skillGuide: 'path/to/skill-guide-3.pdf',
+                    heroResource: 'path/to/hero-resource-3.pdf',
                     html: `
                         <ul>
                             <li>Introduction to Arduino IDE and coding basics.</li>
@@ -172,9 +218,12 @@
                             <li>Debugging common issues in code implementation.</li>
                         </ul>
                         <div class="resources-row">
-                            <div><img src="https://img.icons8.com/ios/452/video-call.png" alt="Video"><br>Video</div>
-                            <div><img src="" alt="Skill Guide"><br>Skill Guide</div>
-                            <div><img src="https://img.icons8.com/ios/452/super-mario.png" alt="Hero's Resource"><br>Hero's Resource</div>
+                            <div onclick="showVideo('sgm3')"><img src="https://img.icons8.com/ios/452/video-call.png" alt="Video"><br>Video</div>
+                            <div onclick="showSkillGuide('sgm3')"><img src="https://img.icons8.com/ios/452/skills.png" alt="Skill Guide"><br>Skill Guide</div>
+                            <div onclick="showHeroResource('sgm3')"><img src="https://img.icons8.com/ios/452/super-mario.png" alt="Hero's Resource"><br>Hero's Resource</div>
+                        </div>
+                        <div id="content-display">
+                            <iframe src="https://www.youtube.com/embed/cOaJDwcRIa0" frameborder="0" allowfullscreen></iframe>
                         </div>
                         <div class="buttons">
                             <button id="journey-button" onclick="showJourneyChallenge('coding')">Are you following along?</button>
@@ -182,17 +231,53 @@
                     `
                 },
                 sgm4: {
-                    title: 'SGM 0.4 - Project Review',
+    title: 'SGM 0.4 - Project Review',
+    video: 'https://www.youtube.com/embed/DZPVd6Tgskc',
+    skillGuide: 'path/to/skill-guide-4.pdf',
+    heroResource: 'path/to/hero-resource-4.pdf',
+    html: `
+        <ul>
+            <li>Review of the completed project.</li>
+            <li>Feedback and suggestions for improvement.</li>
+            <li>Showcasing the project in practical scenarios.</li>
+        </ul>
+        <div class="resources-row">
+            <div onclick="showVideo('sgm4')"><img src="https://img.icons8.com/ios/452/video-call.png" alt="Video"><br>Video</div>
+            <div onclick="showSkillGuide('sgm4')"><img src="https://img.icons8.com/ios/452/skills.png" alt="Skill Guide"><br>Skill Guide</div>
+            <div onclick="showHeroResource('sgm4')"><img src="https://img.icons8.com/ios/452/super-mario.png" alt="Hero's Resource"><br>Hero's Resource</div>
+        </div>
+        <div id="content-display">
+            <iframe src="https://www.youtube.com/embed/DZPVd6Tgskc" frameborder="0" allowfullscreen></iframe>
+        </div>
+        
+        
+                        <h3>Task:</h3>
+                        <p>Now, as a task, try to create a security system using two LEDs and a buzzer.</p>
+                        <p>- Design the system so one LED lights up at a medium distance, while the second LED and the buzzer activate when the object is very close.</p>
+                        <label for="file-upload" class="upload-input">Upload your progress (Image/Video):</label>
+                        <input type="file" id="file-upload" class="upload-input">
+                        <button class="upload-button" onclick="submitFile()">Upload</button>
+                    
+                    `
+                },
+                experienceDiary: {
+                    title: 'Experience Diary',
                     html: `
-                        <ul>
-                            <li>Review of the completed project.</li>
-                            <li>Feedback and suggestions for improvement.</li>
-                            <li>Showcasing the project in practical scenarios.</li>
-                        </ul>
-                        <div class="resources-row">
-                            <div><img src="https://img.icons8.com/ios/452/video-call.png" alt="Video"><br>Video</div>
-                            <div><img src="" alt="Skill Guide"><br>Skill Guide</div>
-                            <div><img src="https://img.icons8.com/ios/452/super-mario.png" alt="Hero's Resource"><br>Hero's Resource</div>
+                        <div class="notepad-container">
+                            <h4>What was the most exciting part of building the Safe Guard Monitor?
+</h4>
+                            <textarea id="experience-text" placeholder="Write your experience here..."></textarea>
+                            <button onclick="submitExperience()">Submit</button>
+                        </div>
+                    `
+                },
+                projectBuilderAward: {
+                    title: 'Project Builder Award',
+                    html: `
+                        <div>
+                            <h3>Project Builder Award</h3>
+                            <p>Congratulations! You have completed the project. Here is your award:</p>
+                            <img src="https://img.icons8.com/color/96/000000/trophy.png" alt="Award">
                         </div>
                     `
                 }
@@ -201,30 +286,79 @@
             let currentContent = content[sectionId];
             sectionTitle.textContent = currentContent.title;
             taskContent.innerHTML = currentContent.html;
+
+            // Hide upload container initially for SGM 4
+            if (sectionId === 'sgm4') {
+                document.getElementById('upload-container').style.display = 'none';
+            }
+        }
+
+        function showVideo(sectionId) {
+            const contentDisplay = document.getElementById('content-display');
+            const content = {
+                sgm1: 'https://www.youtube.com/embed/qUXUYjOgxRw',
+                sgm2: 'https://www.youtube.com/embed/QhF5nFs51PI',
+                sgm3: 'https://www.youtube.com/embed/cOaJDwcRIa0',
+                sgm4: 'https://www.youtube.com/embed/DZPVd6Tgskc'
+            };
+            contentDisplay.innerHTML = `<iframe src="${content[sectionId]}" frameborder="0" allowfullscreen></iframe>`;
+        }
+
+        function showSkillGuide(sectionId) {
+            const contentDisplay = document.getElementById('content-display');
+            const content = {
+                sgm1: 'SAFE GUARD MONITOR PPT (1).pdf',
+                sgm2: 'SAFE GUARD MONITOR PPT (1).pdf',
+                sgm3: 'SAFE GUARD MONITOR PPT (1).pdf',
+                sgm4: 'SAFE GUARD MONITOR PPT (1).pdf'
+            };
+            contentDisplay.innerHTML = `<iframe src="${content[sectionId]}" class="pdf-viewer"></iframe>`;
+        }
+
+        function showHeroResource(sectionId) {
+            const contentDisplay = document.getElementById('content-display');
+            const content = {
+                sgm1: 'SAFE GUARD MONITOR TM.pdf',
+                sgm2: 'SAFE GUARD MONITOR TM.pdf',
+                sgm3: 'SAFE GUARD MONITOR TM.pdf',
+                sgm4: 'SAFE GUARD MONITOR TM.pdf'
+            };
+            contentDisplay.innerHTML = `<iframe src="${content[sectionId]}" class="pdf-viewer"></iframe>`;
         }
 
         function showJourneyChallenge(section) {
             const journeyButton = document.getElementById('journey-button');
             journeyButton.textContent = "Journey Challenge";
-
-            // Update button to trigger the H5P content after clicking "Journey Challenge"
             journeyButton.setAttribute('onclick', `showH5PContent('${section}')`);
+
+            // Show upload container for SGM 4
+            
         }
 
         function showH5PContent(section) {
             const taskContent = document.getElementById('task-content');
             let h5pLinks = {
-                intro: 'https://stemxpert.h5p.com/content/1292463736042884747/embed',
-                circuit: 'https://stemxpert.h5p.com/content/1292463736126961737/embed',
-                coding: 'https://stemxpert.h5p.com/content/1292463736014645217/embed'
+                intro: 'https://none10.h5p.com/content/1292512188400988777/embed',
+                circuit: 'https://none10.h5p.com/content/1292512188477887967/embed',
+                coding: 'https://none10.h5p.com/content/1292512188373933037/embed'
             };
-            taskContent.innerHTML = `
+            taskContent.innerHTML = ` 
                 <iframe src="${h5pLinks[section]}" 
                         aria-label="Example: ${section === 'intro' ? 'Image Choice' : section === 'circuit' ? 'SGM Circuit' : 'Coding'}"
                         frameborder="0" allowfullscreen="allowfullscreen" 
                         allow="autoplay *; geolocation *; microphone *; camera *; midi *; encrypted-media *">
                 </iframe>
             `;
+        }
+
+        function submitExperience() {
+            const experienceText = document.getElementById('experience-text').value;
+            if (experienceText.trim() === "") {
+                alert("Please write your experience before submitting.");
+                return;
+            }
+            alert("Thank you for sharing your experience!");
+            // You can add logic here to save the experience to a database or file.
         }
 
         window.onload = function () {
@@ -241,6 +375,8 @@
                 <li><a href="javascript:void(0);" id="sgm2-link" onclick="loadContent('sgm2')">SGM 0.2 - Circuit Making</a></li>
                 <li><a href="javascript:void(0);" id="sgm3-link" onclick="loadContent('sgm3')">SGM 0.3 - Coding</a></li>
                 <li><a href="javascript:void(0);" id="sgm4-link" onclick="loadContent('sgm4')">SGM 0.4 - Project Review</a></li>
+                <li><a href="javascript:void(0);" id="experienceDiary-link" onclick="loadContent('experienceDiary')">Experience Diary</a></li>
+                <li><a href="javascript:void(0);" id="projectBuilderAward-link" onclick="loadContent('projectBuilderAward')">Project Builder Award</a></li>
             </ul>
         </div>
 
@@ -252,4 +388,3 @@
     </div>
 </body>
 </html>
-
